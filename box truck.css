@@ -1,0 +1,161 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header */
+.header {
+  text-align: left;
+  padding: 20px 10%;
+  border-bottom: 1px solid #ddd;
+}
+
+.header h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.star {
+  color: #7bb7ff#7bb7ff;
+  font-size: 28px;
+  margin-right: 8px;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px 10%;
+  gap: 30px;
+}
+
+/* Image Section */
+.image-box img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Content Section */
+.content-box {
+  max-width: 500px;
+}
+
+.content-box p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.content-box ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.content-box ul li {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #000;
+  position: relative;
+  padding-left: 20px;
+}
+
+.content-box ul li::before {
+  content: "▪";
+  color: #7bb7ff;
+  position: absolute;
+  left: 0;
+}
+
+.highlight {
+  color: #7bb7ff;
+  font-weight: bold;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  background: #7bb7ff;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: darkred;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .content-box {
+    max-width: 100%;
+  }
+}
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .hotshot-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 80px;
+  }
+
+  .hotshot-content {
+    flex: 1;
+    padding-right: 40px;
+  }
+
+  .hotshot-content h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .hotshot-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .red {
+    color: red;
+    font-weight: bold;
+  }
+
+  .blue {
+    color: #0072bc;
+    font-weight: bold;
+  }
+
+  .hotshot-image {
+    flex: 1;
+    text-align: right;
+  }
+
+  .hotshot-image img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
