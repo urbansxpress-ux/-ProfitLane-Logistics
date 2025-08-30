@@ -1,0 +1,878 @@
+/* ---------- Base ---------- */
+:root {
+  --bg: #0b0e14;
+  --surface: #121723;
+  --elev: #1a2130;
+  --muted: #9aa4b2;
+  --text: #e7ecf3;
+  --brand: #5ab0ff;
+  --brand-2: #74f0b5;
+  --ring: 0 0 0 3px rgba(90,176,255,0.25);
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box }
+html, body { height: 100% }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(90,176,255,0.12), transparent 40%),
+              radial-gradient(900px 500px at 110% -20%, rgba(116,240,181,0.12), transparent 45%),
+              var(--bg);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block }
+a { color: var(--brand); text-decoration: none }
+a:hover { text-decoration: underline }
+.container { width: min(10000px, 92%); margin: 0 auto }
+
+.skip-link {
+  position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+}
+.skip-link:focus { left: 16px; top: 16px; width: auto; height: auto; padding: 8px 12px; background: var(--elev); border-radius: 8px }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(140%) blur(10px);
+  background: color-mix(in oklab, var(--bg), transparent 30%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0 }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; color: var(--text) }
+.logo svg { fill: var(--brand) }
+
+.nav-toggle {
+  display: none; appearance: none; border: 1px solid rgba(255,255,255,0.1);
+  padding: 8px 10px; border-radius: 10px; background: var(--elev); color: var(--text); cursor: pointer;
+}
+.nav-list { display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; align-items: center }
+.nav-list a { padding: 8px 10px; border-radius: 10px }
+.nav-list .btn--sm { padding: 10px 14px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block; border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--brand), #fff 6%), color-mix(in oklab, var(--brand), #000 8%));
+  color: #04121c; font-weight: 700; letter-spacing: .2px;
+  padding: 12px 18px; border-radius: 12px; box-shadow: var(--shadow);
+  text-align: center;
+}
+.btn:hover { filter: brightness(1.05) }
+.btn--ghost {
+  background: transparent; color: var(--text); border-color: rgba(255,255,255,0.18);
+  box-shadow: none;
+}
+.btn--block { display: block; width: 100% }
+.btn--lg { padding: 14px 20px; font-size: 1.05rem }
+.btn--sm { padding: 8px 12px; font-size: .95rem }
+
+/* ---------- Hero ---------- */
+.hero { padding: 64px 0 32px }
+.hero-inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: 38px; align-items: center }
+.hero h1 { font-size: clamp(1.8rem, 2.6vw + 1rem, 3rem); line-height: 1.15; margin: 0 0 12px }
+.lead { font-size: 1.1rem; color: var(--muted); margin: 0 0 20px }
+.actions { display: flex; gap: 12px; margin: 12px 0 18px }
+.hero-stats { display: flex; gap: 20px; padding: 0; margin: 14px 0 0; list-style: none }
+.hero-stats li { background: var(--elev); border: 1px solid rgba(255, 255, 255, 0.08); padding: 10px 14px; border-radius: 12px }
+.hero-stats strong { display: block; font-size: 1.1rem }
+.hero-art { position: relative; min-height: 320px }
+.art-map {
+  position: absolute; inset: 0; border-radius: var(--radius);
+  background: radial-gradient(200px 200px at 70% 20%, rgba(90,176,255,0.25), transparent 60%),
+              linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow);
+}
+.art-truck {
+  position: absolute; width: 120px; height: 56px; bottom: 28px; left: 24px; border-radius: 10px;
+  background:
+    linear-gradient(180deg, #e9f2ff, #aacfff 70%, #7bb7ff 100%),
+    linear-gradient(90deg, transparent 30%, rgba(0,0,0,0.08) 80%);
+  box-shadow: 0 6px 18px rgba(90,176,255,.35);
+}
+.art-truck::before, .art-truck::after {
+  content: ""; position: absolute; bottom: -10px; width: 22px; height: 22px; border-radius: 50%;
+  background: #0b1520; box-shadow: inset 0 0 0 3px #2f3b4a;
+}
+.art-truck::before { left: 10px } .art-truck::after { right: 10px }
+
+/* ---------- Sections ---------- */
+.section { padding: 72px 0 }
+.section.alt { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)) }
+.section-head { text-align: center; margin-bottom: 28px }
+.section-head h2 { font-size: clamp(1.5rem, 2vw + .8rem, 2.2rem); margin: 0 0 6px }
+.section-head p { color: var(--muted); margin: 0 }
+
+/* ---------- Cards ---------- */
+.grid.cards {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+}
+.card {
+  background: var(--surface); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); min-height: 160px;
+}
+.card .icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(90,176,255,0.15);
+  display: grid; place-items: center; margin-bottom: 10px; border: 1px solid rgba(90,176,255,0.25) }
+.card .icon svg { width: 22px; height: 22px; fill: var(--brand) }
+.card h3 { margin: 6px 0 8px }
+.card p { margin: 0; color: var(--muted) }
+
+/* ---------- Steps ---------- */
+.steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step;
+  list-style: none; padding: 0; margin: 0;
+}
+.steps li {
+  background: var(--surface); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius);
+  padding: 18px; box-shadow: var(--shadow);
+}
+.steps li span {
+  display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 10px;
+  background: rgba(116,240,181,0.15); border: 1px solid rgba(116,240,181,0.3); color: var(--brand-2); font-weight: 800;
+}
+.steps h3 { margin: 10px 0 6px }
+.steps p { margin: 0; color: var(--muted) }
+
+/* ---------- Pricing ---------- */
+.pricing {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; align-items: stretch;
+}
+.price-card {
+  background: var(--surface); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius);
+  padding: 22px; box-shadow: var(--shadow); display: grid; align-content: start; gap: 12px;
+}
+.price-card.highlighted {
+  outline: var(--ring); border-color: rgba(116,240,181,0.35);
+  background: linear-gradient(180deg, rgba(116,240,181,0.06), transparent 50%), var(--surface);
+}
+.price { color: var(--muted) }
+.price .big { font-size: 2rem; font-weight: 800; color: var(--text) }
+.features { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px }
+.features li::before { content: "✓"; margin-right: 8px; color: var(--brand-2) }
+
+/* ---------- Quotes ---------- */
+.quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px }
+.quotes figure {
+  margin: 0; background: var(--surface); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+}
+.quotes blockquote { margin: 0 0 10px; font-weight: 600 }
+
+/* ---------- FAQ ---------- */
+.faq details {
+  background: var(--surface); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius);
+  padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow);
+}
+.faq summary { cursor: pointer; font-weight: 600 }
+.faq p { margin: 8px 0 0; color: var(--muted) }
+
+/* ---------- Forms ---------- */
+.form { background: var(--surface); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow) }
+.form-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+}
+label { display: grid; gap: 6px; font-weight: 600 }
+input, textarea {
+  width: 100%; padding: 12px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15);
+  background: #0f1420; color: var(--text);
+}
+input:focus, textarea:focus { outline: none; box-shadow: var(--ring) }
+.muted { color: var(--muted) }
+.full { grid-column: 1 / -1 }
+
+/* ---------- Footer ---------- */
+.site-footer { padding: 32px 0; border-top: 1px solid rgba(255,255,255,0.06) }
+.footer-grid { display: flex; align-items: center; justify-content: space-between; gap: 18px }
+.footer-links { display: flex; gap: 12px; list-style: none; margin: 0; padding: 0 }
+.footer-links a { color: var(--muted) }
+.footer-links a:hover { color: var(--text) }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .hero-inner { grid-template-columns: 1fr }
+  .grid.cards { grid-template-columns: repeat(2, 1fr) }
+  .steps { grid-template-columns: repeat(2, 1fr) }
+  .pricing { grid-template-columns: 1fr }
+  .quotes { grid-template-columns: 1fr }
+}
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-block }
+  .nav-list { position: absolute; right: 4%; top: 58px; flex-direction: column; background: var(--surface);
+              border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 12px; display: none }
+  .nav-list.open { display: flex }
+  .grid.cards { grid-template-columns: 1fr }
+  .form-grid { grid-template-columns: 1fr }
+}
+/* Section Styling */
+.truck-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 50px 8%;
+  background-color: #000;
+  color: #fff;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* Left Content */
+.left-content {
+  flex: 1 1 300px;
+}
+
+.left-content h2 {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.left-content h2 span {
+  color: #7bb7ff 
+}
+
+.left-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #ddd;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  background: #7bb7ff ;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #7bb7ff ;
+}
+
+/* Right Content (Grid of Trucks) */
+
+
+.truck-card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .truck-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .truck-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.hero {
+  position: relative;
+  height: 100vh; /* full screen height */
+  background: 
+  linear-gradient(rgb(12, 12, 12), rgba(14, 10, 10, 0.562)), 
+  url('truck/why-is-it-called-a-semi-truck.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  color: #fff;
+background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  
+ 
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1; /* keeps text above overlay */
+  max-width: 700px;
+}
+
+
+
+
+.services1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Big card on left, two small stacked on right */
+  gap: 15px;
+}
+
+.card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(70%);
+  transition: 0.3s;
+}
+
+.card:hover img {
+  filter: brightness(100%);
+  transform: scale(1.05);
+}
+
+.card-content {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #7bb7ff ;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: #7bb7ff ;
+  padding: 8px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Make the two smaller cards stack on the right */
+.services1 .card:nth-child(2),
+.services1 .card:nth-child(3) {
+  height: 200px; /* adjust height to look equal */
+}
+.partners {
+  background: #000;
+  padding: 40px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.partners h3 {
+  color: #ccc;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.partners-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.partners-track {
+  display: flex;
+  gap: 50px;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+.logo img {
+  max-width: 53px;
+  height: auto;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.logo img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Infinite loop animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.partners-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.partners-track {
+  display: flex;
+  gap: 50px;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+/* Infinite repeat animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0a0a0a; /* black background */
+  color: #fff; /* default white text */
+}
+
+.services-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+  padding: 60px 80px;
+}
+
+.services-intro h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.services-intro h1 span {
+  color: #7bb7ff ; /* "our services" red */
+}
+
+.services-intro p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #b3b3b3; /* light gray text */
+  max-width: 500px;
+}
+
+.intro-left {
+  flex: 1;
+}
+
+.intro-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.truck-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 20px; /* equal spacing between all boxes */
+  padding: 30px;
+}
+
+.truck-box {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+}
+
+.truck-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+.truck-box h3 {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: 90,176,255,.35#0e0d0d;
+  text-shadow: 0px 2px 6px rgba(0,0,0,0.8);
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 50px;
+  background: #080808;
+}
+
+.stat-box {
+  background: #39393a2f;
+  padding: 50px;
+  text-align: center;
+  border-radius: 8px;
+  width: 220px;
+}
+
+.stat-box h3 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.stat-box h3 span {
+  color: #7bb7ff ;
+}
+
+.stat-box p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.plo {
+  background: url('truck/partnership.webp') no-repeat center center/cover;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.plo::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* dark overlay */
+  z-index: 1;
+}
+
+.plo-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.plo-content h1 {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.plo-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.plo-content .btn {
+  background: #007bff;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.plo-content .btn:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .plo-content h1 {
+    font-size: 36px;
+  }
+  .plo-content p {
+    font-size: 16px;
+  }
+}
+.services {
+  background: #0d0d0d;
+  color: #fff;
+  padding: 60px 40px;
+}
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.services-header h2 {
+  font-size: 36px;
+  font-weight: bold;
+  flex: 1 100%;
+  margin-bottom: 20px;
+}
+
+.services-header h2 span {
+  color: #3da6ff; /* blue highlight */
+}
+
+.services-header .left, 
+.services-header .right {
+  flex: 1 1 45%;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.services {
+  background: #0d0d0d;
+  color: #fff;
+  padding: 60px 40px;
+}
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.services-header h2 {
+  font-size: 36px;
+  font-weight: bold;
+  flex: 1 100%;
+  margin-bottom: 20px;
+}
+
+.services-header h2 span {
+  color: #3da6ff; /* blue highlight */
+}
+
+.services-header .left, 
+.services-header .right {
+  flex: 1 1 45%;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.service-box {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.service-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.service-box .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* transparent black overlay */
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 15px;
+  transition: background 0.3s ease;
+}
+
+.service-box:hover .overlay {
+  background: rgba(0,0,0,0.6); /* darker on hover */
+}
+
+.service-box .overlay h3 {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  font-weight: bold;
+}
+
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ✅ Extra Responsive Fixes */
+
+/* Hero section mobile fix */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    height: auto; /* remove fixed height */
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hero-art {
+    min-height: 200px;
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+/* Services intro responsive */
+@media (max-width: 768px) {
+  .services-intro {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .services-intro h1 {
+    font-size: 32px;
+  }
+
+  .intro-left, .intro-right {
+    flex: 1 1 100%;
+  }
+}
+
+/* Truck Types responsive */
+@media (max-width: 768px) {
+  .truck-types {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .truck-box img {
+    height: auto;
+  }
+}
+
+/* Stats responsive */
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .stat-box {
+    width: 100%;
+    padding: 20px;
+  }
+}
+/* Common Floating Button Styles */
+.left-float {
+  position: fixed;
+  right: 70px; /* right corner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  z-index: 9999;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Facebook Button */
+.facebook-float {
+  bottom: 90px; /* Top button */
+  background: #1877f2;
+}
+.facebook-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(13, 94, 194, 0.18);
+}
+
+/* Phone Button */
+.phone-float {
+  bottom: 20px; /* Below Facebook */
+  background: linear-gradient(180deg, #28a745, #218838);
+}
+.phone-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(33, 136, 56, 0.18);
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 97%;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header ke neeche content ko chhipne se bachane ke liye */
+body {
+  padding-top: 100px; /* header ki height ke barabar ya jitni height ho */
+}
+
+
