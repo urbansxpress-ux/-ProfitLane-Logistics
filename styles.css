@@ -826,7 +826,7 @@ body {
 /* Common Floating Button Styles */
 .left-float {
   position: fixed;
-  right: 20px; /* right corner */
+  right: 70px; /* right corner */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -865,7 +865,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 97%;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
