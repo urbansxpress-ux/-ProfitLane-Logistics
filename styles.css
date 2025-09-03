@@ -925,3 +925,25 @@ body, html {
   width: 30px;
   height: 30px;
 }
+.icon {
+  position: fixed;
+  right: 22px;
+  padding: 12px;
+  border-radius: 42%;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+/* Email icon */
+.email {
+  bottom: 217px;
+  background: #d44638; /* Gmail red */
+}
